@@ -134,4 +134,13 @@ class Article extends \yii\db\ActiveRecord
         $page = ceil( $count/Yii::$app->params['perPage'] );
         return $page;
     }
+
+    public static function getRandomArticles( $number )
+    {
+        $articles = self::find()
+            ->where(['model' => self::MODEL_NEWS])
+            ->limit( $number )
+            ->all();
+        return $articles;
+    }
 }

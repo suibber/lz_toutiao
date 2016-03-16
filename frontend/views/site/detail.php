@@ -117,7 +117,7 @@
                     <div class="rich_media_content hide_content" id="js_content">
 <!--正文部分 开始-->
 <p style="color: rgb(62, 62, 62); line-height: 1.75em; font-family: 微软雅黑; font-size: 13.33px; white-space: normal; -ms-word-wrap: break-word !important; min-height: 1em; max-width: 100%; box-sizing: border-box !important; background-color: rgb(255, 255, 255);">
-<?=$article->detail?>
+<?=str_ireplace('/kindeditor/', Yii::$app->params['backendUrl'].'/kindeditor/', $article->detail)?>
 </p>
 <!--正文部分 结束-->
                     </div>
@@ -182,7 +182,84 @@
      }
     }
 
+
+.clearfix::after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.m_article .m_article_img {
+    float: left;
+    height: 75px;
+    margin-right: 0.2rem;
+    overflow: hidden;
+    position: relative;
+    width: 92px;
+}
+.m_article_img img{
+    width:92px;
+    height:75px !important;
+}
+.m_article .m_article_info {
+    overflow: hidden;
+    padding-bottom: 4px;
+}
+.m_article {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+}
+section {
+    background: #f6f6f6 none repeat scroll 0 0;
+}
+.clearfix::after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.m_article .m_article_desc .m_article_desc_r {
+    background-position: left 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #888;
+    float: right;
+}
+.m_article .m_article_desc .m_article_desc_l {
+    float: left;
+}
+.m_article .m_article_desc .m_article_time {
+    color: #888;
+    display: inline-block;
+    font-size: 14px;
+}
 </style>
+
+<?php foreach($random_articles as $article){ ?>
+<section class="m_article list-item clearfix" id="BHQ96DG700963VRO">
+    <a href="/site/detail?id=<?=$article->id?>">
+        <div class="m_article_img">
+                <img src="/uploadimg/<?=$article->img?>">
+        </div>
+        <div class="m_article_info">
+            <div class="m_article_title">
+                <span><?=$article->title?></span>
+            </div>
+            <div class="m_article_desc clearfix">
+                <div class="m_article_desc_l">
+                    <span class="m_article_time"><?=SiteController::time_tran($article->updated_time)?></span>
+                </div>
+                    <div class="m_article_desc_r">
+                        <span class="iconfont"></span><?=$article->reader?>
+                    </div>
+            </div>
+        </div>
+    </a>
+</section>
+<?php } ?>
+
 </div>                                    <!-- 相关推荐 END-->
                                     <div class="rich_media_relative_body clearfix">
 

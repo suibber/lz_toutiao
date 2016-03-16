@@ -2,27 +2,36 @@
     use frontend\controllers\SiteController;
 ?>
 <!DOCTYPE html>
-
-<html style="font-size: 112.4px;" data-dpr="1.5"><head>
-    
-<meta charset="UTF-8">
-
+<html style="font-size: 112.4px;" data-dpr="1.5">
+<head>
+    <meta charset="UTF-8">
     <title><?=Yii::$app->params['company']?></title>
-
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
     <meta name="format-detection" content="telephone=no">
-
     <meta name="keywords" content="<?=Yii::$app->params['company']?>">
-
     <meta name="description" content="<?=Yii::$app->params['company']?>">
-
     <style>
 body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,a,code,em,img,q,small,strong,dd,dl,dt,li,ol,ul,fieldset,form,label,table,tbody,tr,th,td,input{margin:0;padding:0;border:0}
 body{font-size:32px;font-size:.32rem;max-width:1080px;margin:0 auto;background:#f6f6f6;font-family:'STHeiti','Microsoft YaHei',Helvetica,Arial,sans-serif;-webkit-text-size-adjust:none}
 a,a:active,a:hover,a:focus,a:visited{text-decoration:none}
 a,img{-webkit-touch-callout:none}
 ol,ul,li{list-style:none}
+.piclist p{
+    background-color: #999;
+    background-image: url("about:blank");
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    position: relative;
+    top: 250px;
+    word-break: break-all;
+    color:#000;
+    opacity:0.8;
+    filter:alpha(opacity=80);
+}
+#slider{
+    top:-51px;
+}
 textarea,input[type="password"],input[type="text"]{resize:none;outline:0;-webkit-appearance:none;white-space:pre-wrap;word-wrap:break-word;background:#fff}
 .clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0}
 p{background-image:url(about:blank);background-color:transparent;word-break:break-all}
@@ -114,6 +123,12 @@ body{width:7.5rem}
 .u_topmenu_child .u_c_items{white-space:nowrap;text-align:center;vertical-align:middle}
 .u_topmenu_child .u_c_items span{color:#999;margin:.25rem 0;font-size:.3rem;line-height:.3rem;white-space:nowrap;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0);text-align:center;cursor:pointer}
 .u_topmenu_child .u_c_items span:active{color:#09f}
+.count{ padding-right: 10px;
+    text-align:right;
+    position: relative;
+    top: 275px;
+    color:#FB1164;
+    z-index: 2;}
 .u_topmenu_child .u_c_items .current span,.u_topmenu_child .u_c_items .current a:visited,.u_topmenu_child .u_c_items .current a:link,.u_topmenu_child .u_c_items .current a:hover,.u_topmenu_child .u_c_items .current a:focus{color:#09f}
 footer{background:#333}
 .copyright{font-size:.24rem;color:#999;text-align:center;padding:.25rem 0}
@@ -134,7 +149,7 @@ footer{background:#333}
 .fr{float:right}
 .contents-tablist{-webkit-transform:translateX(0);transform:translateX(0)}
 
-.headslide{position:relative;width:7.5rem;overflow:hidden}
+.headslide{position:relative;width:7.5rem;overflow:hidden;height:250px;}
 .headslide .slides{height:3.8rem;overflow:hidden;width:7.5rem;transform:translate3d(0,0,0)}
 .headslide .slides li{float:left;height:3.8rem;width:7.5rem;position:relative}
 .headslide .slides li .news-pic{display:inline-block;height:3.8rem;width:100%}
@@ -206,7 +221,7 @@ section{background:#f6f6f6;width:6.9rem}
 .m_photoset .m_photoset_title{font-size:.34rem;margin-bottom:.2rem;color:#404040;display:-webkit-flex;display:-ms-flexbox;display:flex}
 .m_photoset .m_photoset_pic{margin:.22rem 0;display:block}
 .m_photoset .m_photoset_pic .m_photoset_pic_wrap{overflow:hidden;}
-.m_photoset .m_photoset_pic .m_photoset_pic_wrap img{width:100%;float:left;margin-right:2%;display:inline-block;min-height:1.4rem}
+.m_photoset .m_photoset_pic .m_photoset_pic_wrap img{width:32%;float:left;margin-right:2%;display:inline-block;min-height:1.4rem}
 .m_photoset .m_photoset_pic .m_photoset_pic_wrap img:last-child{margin-right:0}
 .m_photoset_square{background:#fff;width:3.35rem;float:left;margin:.2rem 0 0 0;padding:0;border:0;box-shadow:0 1px 1px #e3e3e3}
 .m_photoset_square .m_photoset_square_img{float:left;width:100%;overflow:hidden;position:relative;height:auto;-webkit-animation:imgload2 1s ease-out;animation:imgload2 1s ease-out;-webkit-animation-name:imgload2;-webkit-animation-duration:1s;-webkit-animation-timing-function:ease-out}
@@ -332,7 +347,7 @@ ul, li {
             NEWAP.routename = "channel=";
         }
     </script>
-    <script src="http://img2.cache.netease.com/f2e/wap/touch/trunk/index/js/newaplib.1OhW3awmIxkk.12.js"></script>
+    <script src="/css/newaplib.1OhW3awmIxkk.12.js"></script>
     </head>
 <body>
 <h1 style="display: none;">卡车军团</h1>
@@ -394,38 +409,75 @@ ul, li {
     <div class="contents">
         <div class="contents-tablist clearfix" style="width: 30240px; transform: translate3d(0px, 0px, 0px); transition-duration: 0.5s;"><div class="contents-tablist-wrap fl active" id="channel_all" style="width: 1440px; height: auto; min-height: 417px;">
     <div class="headslide">    
-<ul class="slides" style="width: 5400px; transform: translate3d(0px, 0px, 0px); transition-duration: 0s;">
-    <?php foreach($scroll_imgs as $scroll_img){ ?>
-    <li class="page" style="width: 1080px;" data-id="0">
-        <a class="news-pic" href="<?=$scroll_img->img?>">
-            <img src="/uploadimg/<?=$scroll_img->img?>">
-            <span class="title"><?=$scroll_img->title?></span>
-        </a>
-    </li>
-    <?php } ?>
-</ul>
-    <ul class="ctrls">
-        <li class="on"></li>
-        <?php for($i=1;$i<count($scroll_imgs);$i++){ ?>
-        <li></li>
+
+
+<script type="text/javascript" src="/css/demo_data/zepto_min.js"></script>
+<script type="text/javascript" src="/css/demo_data/touchslider.js"></script>
+    <div class="title" style="height:1px; overflow:hidden">1111</div>
+    <div style="overflow: hidden; visibility: visible; list-style: outside none none; position: relative;" id="slider" class="swipe">
+        <div class="count">
+            <b class="bi">1</b>/<b class="bcount"><?=count($scroll_imgs)?></b>
+        </div>
+        <ul style="position: relative; transition: left 0ms ease-out 0s; width: 5464px; left: -4098px;" class="piclist">
+        <?php foreach($scroll_imgs as $k => $scroll_img){ ?>
+            <li style="width: 1366px; height: 260px; display: table-cell; padding: 0px; margin: 0px; float: left; vertical-align: top;"><p><?=$scroll_img->title?></p><img class="scroll-img" src="/uploadimg/<?=$scroll_img->img?>"></li>
         <?php } ?>
-    </ul>
+        </ul>
+    </div>
+<style>
+    .scroll-img{
+        width:100%;
+        height:281px;
+    }
+</style>
+<script type="text/javascript">
+$(function(){
+
+    var num=$('#slider').find('li').size();
+
+    $('.bcount').text(num);
+
+    $('.b_btn').click(function(){
+
+        $(this).toggleClass('b_btn_active');
+
+        $('.intro').toggle();
+
+    })
+
+})
+var tt=new TouchSlider({id:'slider','auto':'-1',fx:'ease-out',direction:'left',speed:600,timeout:5000,'before':function(index){
+
+    var es=document.getElementById('slider').getElementsByTagName('li');
+
+    var it=$(es[index]).index()+1;
+
+    $('.bi').text(it);
+
+    var tx=$(es[index]).find('p').text();
+
+    $('.title').text(tx);
+
+}});
+</script>
 </div>
     <div class="content-list"><section class="m_photoset m_article list-item clearfix" id="BHQ8UA42bjzhuyueke">
-    <a href="<?=$head_news->url?>">
+    <a href="<?=$head_news[0]->url?>">
         <div class="m_photoset_title">
-            <?=$head_news->title?>
+            <?=$head_news[0]->title?>
         </div>
         <div class="m_photoset_pic">
             <div class="m_photoset_pic_wrap clearfix">
-                <img src="/uploadimg/<?=$head_news->img?>">
+                <img src="/uploadimg/<?=$head_news[0]->img?>">
+                <img src="/uploadimg/<?=$head_news[1]->img?>">
+                <img src="/uploadimg/<?=$head_news[2]->img?>">
             </div>
         </div>
         <div class="m_photoset_info">
             <div class="m_article_desc clearfix">
                 <div class="m_article_desc_l">
                         <span class="m_article_channel">娱乐新闻</span>
-                    <span class="m_article_time"><?=$head_news->info?></span>
+                    <span class="m_article_time"><?=$head_news[0]->info?></span>
                 </div>
                 <!--div class="m_article_desc_r">
                     <span class="iconfont"></span>360

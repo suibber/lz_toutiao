@@ -6,4 +6,5 @@ return [
     'company' => '卡车军团',
     'powered' => 'Powered by 卡车军团',
     'perPage' => 20,
+    'backendUrl' => 'http://louzhe-toutiao-admin.lianjievip.com',
 ];

@@ -77,7 +77,7 @@ class SiteController extends BaseController
         $page =  BaseController::processPaging();
         $articles = Article::getNewsArticles($page);
         $scroll_imgs = ConfigInfo::findAll(['type' => 1]);
-        $head_news = ConfigInfo::findOne(['type' => 2]);
+        $head_news = ConfigInfo::find()->where(['type' => 2])->limit(3)->orderBy(['rank' => SORT_ASC])->all();
         $total_page = Article::getNewsArticlesTotlePage();
         return $this->renderPartial('index',[
             'articles' => $articles,
@@ -90,8 +90,10 @@ class SiteController extends BaseController
     public function actionDetail($id = 0)
     {
         $article = Article::findOne(['id' => $id]);
+        $random_articles = Article::getRandomArticles(6);
         return $this->renderPartial('detail',[
             'article' => $article,
+            'random_articles' => $random_articles,
         ]);
     }
 
