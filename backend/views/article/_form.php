@@ -64,6 +64,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'agree')->textInput() ?>
 
     <?= $form->field($model, 'img')->fileInput() ?>
+    <?= $form->field($model, 'img2')->fileInput() ?>
+    <?= $form->field($model, 'img3')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -25,14 +25,21 @@ class BaseController extends Controller
 
     public static function saveImg($uploadFile)
     {
-        $hash = date('Y-m-d-H-i-s') . '-' . intval(microtime(true)*10000);
-        $ext = pathinfo($uploadFile['name']['img'], PATHINFO_EXTENSION);
-        $filename = $hash . '.' . $ext;
-        $savefile = '../../frontend/web/uploadimg/'.$filename;
-        if(move_uploaded_file($uploadFile['tmp_name']['img'], $savefile)) {
-            return $filename;
+        $files = [];
+        foreach( $uploadFile['name'] as $k => $v ){
+            $hash = date('Y-m-d-H-i-s') . '-' . intval(microtime(true)*10000) . '-' . rand(1000,9999);
+            $ext = pathinfo($uploadFile['name'][$k], PATHINFO_EXTENSION);
+            $filename = $hash . '.' . $ext;
+            $savefile = '../../frontend/web/uploadimg/'.$filename;
+            if(move_uploaded_file($uploadFile['tmp_name'][$k], $savefile)) {
+                $files[] = $filename;
+            }
         }
-        return false;
+        if( count($files) > 1 ){
+            return $files;
+        }else{
+            return $files[0];
+        }
     }
 
      /**                                                                                                                                                                     

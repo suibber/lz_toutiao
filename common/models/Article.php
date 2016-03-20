@@ -68,7 +68,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['model', 'type', 'reader', 'agree', 'is_recommend'], 'integer'],
             [['created_time', 'updated_time'], 'safe'],
-            [['detail'], 'string'],
+            [['detail', 'img2', 'img3'], 'string'],
             [['title', 'img'], 'string', 'max' => 200],
             [['author_name'], 'string', 'max' => 100]
         ];
@@ -91,6 +91,8 @@ class Article extends \yii\db\ActiveRecord
             'reader' => '阅读(笑脸)次数',
             'agree' => '赞同(哭脸)次数',
             'img' => '图片(不修改请留空)',
+            'img2' => '图片2(多图文列表展示，不修改请留空)',
+            'img3' => '图片3(多图文列表展示，不修改请留空)',
             'is_recommend' => '推荐',
         ];
     }
@@ -101,7 +103,7 @@ class Article extends \yii\db\ActiveRecord
             ->where(['model' => self::MODEL_NEWS])
             ->offset(($page[1]-1)*$page[0])
             ->limit($page[0])
-            ->orderBy(['id' => SORT_DESC])
+            ->orderBy(['updated_time' => SORT_DESC])
             ->all();
         return $articles;
     }

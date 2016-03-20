@@ -55,10 +55,19 @@ class ArticleController extends BackendController
             $data['Article']['detail'] = isset($data['content2']) ? $data['content2'] : '';
             // 上传图片
             if( $_FILES['Article']['size'] > 0 ){
-                $filename = $this->saveImg( $_FILES['Article']);
-                $data['Article']['img'] = $filename;
+                $files = $this->saveImg( $_FILES['Article']);
+                if( is_array($files) ){
+                    if( count( $files ) == 3 ){
+                        $data['Article']['img'] = $files[0];
+                        $data['Article']['img2'] = $files[1];
+                        $data['Article']['img3'] = $files[2];
+                    }else{
+                        $data['Article']['img'] = $files[0];
+                    }
+                }else{
+                    $data['Article']['img'] = $files;
+                }
             }
-
         }
         if ($model->load($data ) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -84,10 +93,22 @@ class ArticleController extends BackendController
 
             // 上传图片
             if( $_FILES['Article']['size']['img'] > 0 ){
-                $filename = $this->saveImg( $_FILES['Article']);
-                $data['Article']['img'] = $filename;
+                $files = $this->saveImg( $_FILES['Article']);
+                if( is_array($files) ){
+                    if( count( $files ) == 3 ){
+                        $data['Article']['img'] = $files[0];
+                        $data['Article']['img2'] = $files[1];
+                        $data['Article']['img3'] = $files[2];
+                    }else{
+                        $data['Article']['img'] = $files[0];
+                    }
+                }else{
+                    $data['Article']['img'] = $files;
+                }
             }else{
                 unset($data['Article']['img']);
+                unset($data['Article']['img2']);
+                unset($data['Article']['img3']);
             }
         }
         if ($model->load($data ) && $model->save()) {
