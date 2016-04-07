@@ -29,7 +29,12 @@
         </a>
     </div>
     <div class="content">
-        <?=$article->detail?>
+        <style>
+            .content img{
+                width:100%
+            }
+        </style>
+        <?=str_ireplace('/kindeditor/', Yii::$app->params['backendUrl'].'/kindeditor/', $article->detail)?>
     </div>
     <div class="stats">
         <span class="stats-vote">
